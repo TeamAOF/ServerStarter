@@ -129,6 +129,13 @@ class LoaderManager(private val configFile: ConfigFile, private val internetMana
         // http://files.minecraftforge.net/maven/net/minecraftforge/forge/1.12.2-14.23.3.2682/forge-1.12.2-14.23.3.2682-installer.jar
         //val installerPath = File(basePath + "forge-" + versionString + "-installer.jar")
         val installerPath = File(basePath + "installer.jar")
+        val runUnix = File(basePath + "run.sh")
+        val runWin = File(basePath + "run.bat")
+        val userArg = File(basePath + "user_jvm_args.txt")
+        val installerLog = File(basePath + "installer.jar.log")
+        val modpackDL = File(basePath + "modpack-download.zip")
+        val manifest = File(basePath + "manifest.json")
+
 
 
         try {
@@ -158,9 +165,13 @@ class LoaderManager(private val configFile: ConfigFile, private val internetMana
             lockFile.mcVersion = mcVersion
             ServerStarter.saveLockFile(lockFile)
 
-
             installerPath.delete()
-
+            runUnix.delete()
+            runWin.delete()
+            userArg.delete()
+            installerLog.delete()
+            modpackDL.delete()
+            manifest.delete()
 
             checkEULA(basePath)
         } catch (e: IOException) {
