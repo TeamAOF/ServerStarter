@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/us/bin/env bash
 
 # `-d64` option was removed in Java 10, this handles these versions accordingly
 JAVA_FLAGS=""
